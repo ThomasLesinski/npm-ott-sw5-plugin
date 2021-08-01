@@ -1,0 +1,48 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%\Bootstrap;
+
+use Shopware\Bundle\AttributeBundle\Service\CrudService;
+use Shopware\Components\Model\ModelManager;
+
+class AttributeBuilder
+{
+    private $crudService;
+    private $updatedTables = [];
+    private $manager;
+
+    public function __construct(CrudService $crudService, ModelManager $manager)
+    {
+        $this->crudService = $crudService;
+        $this->manager     = $manager;
+    }
+
+    public function addAttribute(
+        $table,
+        $fieldName,
+        $options,
+        $defaultValue = null,
+        $fieldType = 'string',
+        $newColumnName = null,
+        $updateDependingTables = true
+    ){
+        $this->crudService->update(
+            $table,
+            $fieldName,
+            $fieldType,
+            $options,
+            $newColumnName,
+            $updateDependingTables,
+            $defaultValue
+        );
+
+        if (!in_array($table, $this->updatedTables)) {
+            $this->updatedTables[] = $table;
+        }
+    }
+
+    public function generateAttributes()
+    {
+        $this->manager->generateAttributeModels($this->updatedTables);
+    }
+}

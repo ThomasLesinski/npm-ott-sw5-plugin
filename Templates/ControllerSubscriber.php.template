@@ -1,0 +1,40 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%\Subscriber;
+
+use Enlight\Event\SubscriberInterface;
+
+class ControllerSubscriber implements SubscriberInterface
+{
+    private $translationService;
+
+    public function __construct(\Shopware_Components_Translation $translationService)
+    {
+        $this->translationService = $translationService;
+    }
+
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'Enlight_Controller_Action_PostDispatch_Frontend_Detail' => 'onPostDispatchDetail',
+            'Shopware_CronJob_UpdateDeliverytimeAttribute'           => 'onUpdateDeliverytimeCronjob',
+        ];
+    }
+
+    public function onPostDispatchSecure(\Enlight_Event_EventArgs $args): void
+    {
+        $config = Shopware()
+            ->Container()
+            ->get('shopware.plugin.config_reader')
+            ->getByPluginName('OttWordpressMenu', Shopware()->Shop());
+
+        // $config['cms_category_id']
+
+        $controller = $args->getSubject();
+        $view = $controller->View();
+    }
+
+    public function onUpdateDeliverytimeCronjob(\Shopware_Components_Cron_CronJob $job): void
+    {
+    }
+}

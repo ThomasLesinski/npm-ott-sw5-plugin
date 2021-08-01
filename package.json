@@ -1,0 +1,16 @@
+{
+  "name": "ott-sw5-plugin",
+  "version": "1.0.0",
+  "description": "Create sw5 plugin",
+  "type": "module",
+  "bin": {
+    "ott-sw5-plugin": "app.js"
+  },
+  "author": "Ottscho IT Gmbh, Thomas Lesinski",
+  "license": "Proprietary",
+  "dependencies": {
+    "inquirer": "^7.3.0",
+    "rxjs": "^6.6.0",
+    "shelljs": "^0.8.4"
+  }
+}

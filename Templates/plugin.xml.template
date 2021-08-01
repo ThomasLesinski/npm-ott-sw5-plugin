@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label lang="de">%pluginName%</label>
+    <label lang="en">%pluginName%</label>
+    <version>1.0.0</version>
+    <author>Ottscho IT-Service</author>
+    <copyright>Ottscho IT-Service</copyright>
+    <license>Proprietär</license>
+    <link>https://www.ottscho-it-service.de/</link>
+    <description lang="de">%pluginName%</description>
+    <description lang="en">%pluginName%</description>
+</plugin>

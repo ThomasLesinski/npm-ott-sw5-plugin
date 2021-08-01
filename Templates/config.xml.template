@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <label>%pluginName% Konfiguration</label>
+    <elements>
+        <element required="true" type="text">
+            <name>cms_category_id</name>
+            <label lang="de">CMSKategorieID</label>
+            <label lang="en">CMSCategoryID</label>
+        </element>
+    </elements>
+</config>

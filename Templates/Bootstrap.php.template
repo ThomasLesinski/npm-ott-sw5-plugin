@@ -1,0 +1,52 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%;
+
+use Shopware\Components\Plugin;
+use Shopware\Components\Plugin\Context\InstallContext;
+use Shopware\Components\Plugin\Context\ActivateContext;
+use Shopware\Components\Plugin\Context\DeactivateContext;
+use Shopware\Bundle\AttributeBundle\Service\TypeMapping;
+use %pluginName%\Bootstrap\AttributeBuilder;
+
+class %pluginName% extends Plugin
+{
+    public function install(InstallContext $context): array
+    {
+        $attribute = new AttributeBuilder(
+            Shopware()->Container()->get('shopware_attribute.crud_service'),
+            Shopware()->Container()->get('models')
+        );
+
+        $attribute->addAttribute(
+            's_articles_attributes',
+            'ott_projects',
+            [
+                'label'            => 'Projects',
+                'supportText'      => 'IDs der Wordpress-Seiten (kommagetrennt), welche passende Referenzen/Inspirationen enthalten. Dargestellt als Link/Teaser.',
+                'displayInBackend' => true,
+                'translatable'     => false,
+                'custom'           => true
+            ],
+            '',
+            TypeMapping::TYPE_STRING
+        );
+
+        $attribute->generateAttributes();
+
+        return [
+            'success' => true,
+            'invalidateCache' => ['frontend', 'backend', 'theme']
+        ];
+    }
+
+    public function activate(ActivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_DEFAULT);
+    }
+
+    public function deactivate(DeactivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_DEFAULT);
+    }
+}
