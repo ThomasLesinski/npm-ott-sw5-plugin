@@ -38,7 +38,7 @@ export default class OttPluginController {
             `${this.#pluginFolderPath}/Resources/frontend/less`,
             `${this.#pluginFolderPath}/Resources/Views/frontend/frontend_controller`,
             `${this.#pluginFolderPath}/Bootstrap`,
-            `${this.#pluginFolderPath}/Controller/Frontend`
+            `${this.#pluginFolderPath}/Controllers/Frontend`
         ]);
 
         this.#fileController.createImage(

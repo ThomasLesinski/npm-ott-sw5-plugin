@@ -6,7 +6,6 @@
 
     <services>
         <service id="ott.%pluginNameLowercase%.subscriber.controller" class="%pluginName%\Subscriber\ControllerSubscriber">
-            <argument type="service" id="translation"/>
             <tag name="shopware.event_subscriber"/>
         </service>
     </services>

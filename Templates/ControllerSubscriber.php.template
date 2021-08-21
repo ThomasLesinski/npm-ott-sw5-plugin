@@ -21,7 +21,7 @@ class ControllerSubscriber implements SubscriberInterface
         ];
     }
 
-    public function onPostDispatchSecure(\Enlight_Event_EventArgs $args): void
+    public function onPostDispatchDetail(\Enlight_Event_EventArgs $args): void
     {
         $config = Shopware()
             ->Container()

@@ -4,8 +4,8 @@
     <label lang="de">%pluginName%</label>
     <label lang="en">%pluginName%</label>
     <version>1.0.0</version>
-    <author>Ottscho IT-Service</author>
-    <copyright>Ottscho IT-Service</copyright>
+    <author>Ottscho IT GmbH</author>
+    <copyright>Ottscho IT GmbH</copyright>
     <license>Proprietär</license>
     <link>https://www.ottscho-it-service.de/</link>
     <description lang="de">%pluginName%</description>
