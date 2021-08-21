@@ -8,20 +8,21 @@ class ControllerSubscriber implements SubscriberInterface
 {
     private $translationService;
 
-    public function __construct(\Shopware_Components_Translation $translationService)
-    {
+    public function __construct(
+        \Shopware_Components_Translation $translationService
+    ) {
         $this->translationService = $translationService;
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            'Enlight_Controller_Action_PostDispatch_Frontend_Detail' => 'onPostDispatchDetail',
-            'Shopware_CronJob_UpdateDeliverytimeAttribute'           => 'onUpdateDeliverytimeCronjob',
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend_Listing' => 'onPostDispatchSecureListing',
+            'Shopware_CronJob_UpdateDeliverytimeAttribute'                  => 'onUpdateDeliverytimeCronjob',
         ];
     }
 
-    public function onPostDispatchDetail(\Enlight_Event_EventArgs $args): void
+    public function onPostDispatchSecureListing(\Enlight_Event_EventArgs $args): void
     {
         $config = Shopware()
             ->Container()
@@ -31,6 +32,7 @@ class ControllerSubscriber implements SubscriberInterface
         // $config['cms_category_id']
 
         $controller = $args->getSubject();
+        $request = $args->get('request');
         $view = $controller->View();
     }
 
