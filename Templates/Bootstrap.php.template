@@ -42,11 +42,11 @@ class %pluginName% extends Plugin
 
     public function activate(ActivateContext $context): void
     {
-        $context->scheduleClearCache(InstallContext::CACHE_LIST_DEFAULT);
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
     }
 
     public function deactivate(DeactivateContext $context): void
     {
-        $context->scheduleClearCache(InstallContext::CACHE_LIST_DEFAULT);
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
     }
 }
