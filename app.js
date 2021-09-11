@@ -9,7 +9,7 @@ import PluginController from './Controller/plugin.controller.mjs';
 const pluginController = new PluginController();
 const prompts = new Rx.Subject();
 
-let questions = [
+const questions = [
     {
         type: 'input',
         name: 'plugin-name',
