@@ -6,7 +6,7 @@
   "bin": {
     "ott-sw5-plugin": "app.js"
   },
-  "author": "Ottscho IT Gmbh, Thomas Lesinski",
+  "author": "Ottscho IT GbmH, Thomas Lesinski",
   "license": "Proprietary",
   "dependencies": {
     "inquirer": "^7.3.0",
