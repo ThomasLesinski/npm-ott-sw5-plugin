@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%\Subscriber;
+
+use Enlight\Event\SubscriberInterface;
+
+class CronjobSubscriber implements SubscriberInterface
+{
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'Shopware_CronJob_UpdateDeliverytimeAttribute' => 'onUpdateDeliverytimeCronjob',
+        ];
+    }
+
+    public function onUpdateDeliverytimeCronjob(\Shopware_Components_Cron_CronJob $job): void
+    {
+    }
+}

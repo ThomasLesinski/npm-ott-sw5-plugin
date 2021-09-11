@@ -1,0 +1,69 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%;
+
+use %pluginName%\Bootstrap\AttributeBuilder;
+use %pluginName%\Bootstrap\EmotionElementInstaller;
+use Shopware\Bundle\AttributeBundle\Service\TypeMapping;
+use Shopware\Components\Plugin;
+use Shopware\Components\Plugin\Context\ActivateContext;
+use Shopware\Components\Plugin\Context\DeactivateContext;
+use Shopware\Components\Plugin\Context\InstallContext;
+
+class %pluginName% extends Plugin
+{
+    public function install(InstallContext $context): array
+    {
+        $this->createAttributes();
+        $this->installEmotionElements();
+
+        return [
+            'success'         => true,
+            'invalidateCache' => ['frontend', 'backend', 'theme'],
+        ];
+    }
+
+    public function activate(ActivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
+    }
+
+    public function deactivate(DeactivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
+    }
+
+    private function createAttributes(): void
+    {
+        $attribute = new AttributeBuilder(
+            Shopware()->Container()->get('shopware_attribute.crud_service'),
+            Shopware()->Container()->get('models')
+        );
+
+        $attribute->addAttribute(
+            's_articles_attributes',
+            'ott_projects',
+            [
+                'label'            => 'Projects',
+                'supportText'      => 'IDs der Wordpress-Seiten (kommagetrennt).',
+                'displayInBackend' => true,
+                'translatable'     => false,
+                'custom'           => true,
+            ],
+            '',
+            TypeMapping::TYPE_STRING
+        );
+
+        $attribute->generateAttributes();
+    }
+
+    private function installEmotionElements(): void
+    {
+        $emotionElementInstaller = new EmotionElementInstaller(
+            $this->getName(),
+            $this->container->get('shopware.emotion_component_installer')
+        );
+
+        $emotionElementInstaller->install();
+    }
+}

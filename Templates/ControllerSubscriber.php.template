@@ -18,7 +18,6 @@ class ControllerSubscriber implements SubscriberInterface
     {
         return [
             'Enlight_Controller_Action_PostDispatchSecure_Frontend_Listing' => 'onPostDispatchSecureListing',
-            'Shopware_CronJob_UpdateDeliverytimeAttribute'                  => 'onUpdateDeliverytimeCronjob',
         ];
     }
 
@@ -34,9 +33,5 @@ class ControllerSubscriber implements SubscriberInterface
         $controller = $args->getSubject();
         $request = $args->get('request');
         $view = $controller->View();
-    }
-
-    public function onUpdateDeliverytimeCronjob(\Shopware_Components_Cron_CronJob $job): void
-    {
     }
 }
