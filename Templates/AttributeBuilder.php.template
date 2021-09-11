@@ -11,8 +11,10 @@ class AttributeBuilder
     private $updatedTables = [];
     private $manager;
 
-    public function __construct(CrudService $crudService, ModelManager $manager)
-    {
+    public function __construct(
+        CrudService $crudService,
+        ModelManager $manager
+    ) {
         $this->crudService = $crudService;
         $this->manager     = $manager;
     }
@@ -25,7 +27,7 @@ class AttributeBuilder
         $fieldType = 'string',
         $newColumnName = null,
         $updateDependingTables = true
-    ){
+    ): void {
         $this->crudService->update(
             $table,
             $fieldName,
@@ -41,7 +43,7 @@ class AttributeBuilder
         }
     }
 
-    public function generateAttributes()
+    public function generateAttributes(): void
     {
         $this->manager->generateAttributeModels($this->updatedTables);
     }

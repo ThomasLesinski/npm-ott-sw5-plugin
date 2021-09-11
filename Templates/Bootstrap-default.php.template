@@ -1,0 +1,29 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%;
+
+use Shopware\Components\Plugin;
+use Shopware\Components\Plugin\Context\ActivateContext;
+use Shopware\Components\Plugin\Context\DeactivateContext;
+use Shopware\Components\Plugin\Context\InstallContext;
+
+class %pluginName% extends Plugin
+{
+    public function install(InstallContext $context): array
+    {
+        return [
+            'success'         => true,
+            'invalidateCache' => ['frontend', 'backend', 'theme'],
+        ];
+    }
+
+    public function activate(ActivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
+    }
+
+    public function deactivate(DeactivateContext $context): void
+    {
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
+    }
+}

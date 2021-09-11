@@ -1,7 +1,7 @@
 import fs from 'fs';
 import shell from 'shelljs';
 
-export default class OttFileController {
+export default class FileController {
     constructor() {
         this.currentDir = process.cwd();
     }
@@ -28,7 +28,7 @@ export default class OttFileController {
         return fs.existsSync(dir);
     }
 
-    createFile(destination, templatePath = false, replacements = false,) {
+    createFile(destination, templatePath = false, replacements = false) {
         let template;
 
         if (templatePath) {

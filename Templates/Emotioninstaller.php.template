@@ -1,0 +1,41 @@
+<?php declare(strict_types=1);
+
+namespace %pluginName%\Bootstrap;
+
+use Shopware\Components\Emotion\ComponentInstaller;
+
+class EmotionElementInstaller
+{
+    private $emotionComponentInstaller;
+    private $pluginName;
+
+    public function __construct(
+        $pluginName,
+        ComponentInstaller $emotionComponentInstaller
+    ) {
+        $this->emotionComponentInstaller = $emotionComponentInstaller;
+        $this->pluginName = $pluginName;
+    }
+
+    public function install(): void
+    {
+        $getTheLookElement = $this->emotionComponentInstaller->createOrUpdate(
+            $this->pluginName,
+            'OttEmotionGetTheLook',
+            [
+                'name'        => 'Get The Look',
+                'template'    => 'emotion_getthelook',
+                'cls'         => 'emotion-getthelook-element',
+                'description' => 'Produktauflistung die in Warenkorb gelegt werden kann.',
+            ]
+        );
+
+        for ($i = 1; $i <= 6; $i++) {
+            $getTheLookElement->createTextField([
+                'name'       => 'ott_getthelook_article_' . $i,
+                'fieldLabel' => 'Artikelnummer ' . $i,
+                'allowBlank' => true,
+            ]);
+        }
+    }
+}
