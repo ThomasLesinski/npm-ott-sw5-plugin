@@ -192,7 +192,6 @@ export default class PluginController {
             servicesType = 'emotioninstaller';
         }
 
-        // TODO: Resource folder might not be needed cuz of no config.xml or servixes.xml
         if ('' !== servicesType) {
             this.fileController.createFile(
                 `${this.pluginFolderPath}/Resources/services.xml`,
