@@ -16,7 +16,7 @@ class AttributeBuilder
         ModelManager $manager
     ) {
         $this->crudService = $crudService;
-        $this->manager     = $manager;
+        $this->manager = $manager;
     }
 
     public function addAttribute(

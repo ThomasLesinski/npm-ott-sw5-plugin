@@ -239,8 +239,8 @@ export default class PluginController {
 
         if (presetEmotioninstaller) {
             this.fileController.createFile(
-                `${this.pluginFolderPath}/Bootstrap/Emotioninstaller.php`,
-                `${this.templatesFolderPath}/Emotioninstaller.php.template`,
+                `${this.pluginFolderPath}/Bootstrap/EmotionElementInstaller.php`,
+                `${this.templatesFolderPath}/EmotionElementInstaller.php.template`,
                 [
                     ['%pluginName%', this.pluginName],
                 ],

@@ -8,7 +8,7 @@ class Shopware_Controllers_Frontend_FrontendController extends Enlight_Controlle
     public function getWhitelistedCSRFActions(): array
     {
         return [
-            'index'
+            'index',
         ];
     }
 
