@@ -36,8 +36,8 @@ const questions = [
                 value: 'preset-emotioninstaller',
             },
             {
-                name: 'Controller subscriber',
-                value: 'preset-controllersubscriber',
+                name: 'Subscriber',
+                value: 'preset-subscriber',
             },
             {
                 name: 'Frontend controller',

@@ -101,7 +101,7 @@ export default class PluginController {
         let presetAttributeBuilder = this.presets.includes('preset-attribute-builder');
         let presetCronjob = this.presets.includes('preset-cronjob');
         let presetEmotioninstaller = this.presets.includes('preset-emotioninstaller');
-        let presetControllersubscriber = this.presets.includes('preset-controllersubscriber');
+        let presetSubscriber = this.presets.includes('preset-subscriber');
         let presetFrontendcontroller = this.presets.includes('preset-frontendcontroller');
         let presetWidgetcontroller = this.presets.includes('preset-widgetcontroller');
         let presetPluginconfiguration = this.presets.includes('preset-pluginconfiguration');
@@ -110,7 +110,7 @@ export default class PluginController {
             directoriesToCreate.push(`${this.pluginFolderPath}/Bootstrap`);
         }
 
-        if (presetCronjob || presetControllersubscriber) {
+        if (presetCronjob || presetSubscriber) {
             directoriesToCreate.push(`${this.pluginFolderPath}/Subscriber`);
         }
 
@@ -154,7 +154,7 @@ export default class PluginController {
             ],
         );
 
-        if (presetControllersubscriber) {
+        if (presetSubscriber) {
             this.fileController.createFile(
                 `${this.pluginFolderPath}/Subscriber/ControllerSubscriber.php`,
                 `${this.templatesFolderPath}/ControllerSubscriber.php.template`,
@@ -176,16 +176,16 @@ export default class PluginController {
 
         let servicesType = '';
 
-        if (presetControllersubscriber && presetCronjob && presetEmotioninstaller) {
+        if (presetSubscriber && presetCronjob && presetEmotioninstaller) {
             servicesType = 'mixed';
-        } else if (presetControllersubscriber && presetCronjob) {
-            servicesType = 'cronjob-controller';
+        } else if (presetSubscriber && presetCronjob) {
+            servicesType = 'cronjob-subscriber';
         } else if (presetCronjob && presetEmotioninstaller) {
             servicesType = 'cronjob-emotioninstaller';
-        } else if (presetControllersubscriber && presetEmotioninstaller) {
-            servicesType = 'controller-emotioninstaller';
-        } else if (presetControllersubscriber) {
-            servicesType = 'controllersubscriber';
+        } else if (presetSubscriber && presetEmotioninstaller) {
+            servicesType = 'subscriber-emotioninstaller';
+        } else if (presetSubscriber) {
+            servicesType = 'subscriber';
         } else if (presetCronjob) {
             servicesType = 'cronjob';
         } else if (presetEmotioninstaller) {
