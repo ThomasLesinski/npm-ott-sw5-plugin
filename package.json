@@ -4,7 +4,7 @@
   "description": "Create sw5 plugin",
   "type": "module",
   "bin": {
-    "ott-sw5-plugin": "app.js"
+    "sw5plugin": "app.js"
   },
   "author": "Ottscho IT GmbH, Thomas Lesinski",
   "license": "Proprietary",

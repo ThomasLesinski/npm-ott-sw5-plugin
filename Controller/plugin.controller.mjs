@@ -133,7 +133,7 @@ export default class PluginController {
             `${this.templatesFolderPath}/plugin.xml.template`,
             [
                 ['%pluginName%', this.pluginName],
-            ]
+            ],
         );
 
         let bootstrapType = 'default';
@@ -151,7 +151,7 @@ export default class PluginController {
             `${this.templatesFolderPath}/Bootstrap-${bootstrapType}.php.template`,
             [
                 ['%pluginName%', this.pluginName],
-            ]
+            ],
         );
 
         if (presetControllersubscriber) {
@@ -160,7 +160,7 @@ export default class PluginController {
                 `${this.templatesFolderPath}/ControllerSubscriber.php.template`,
                 [
                     ['%pluginName%', this.pluginName],
-                ]
+                ],
             );
         }
 
@@ -170,7 +170,7 @@ export default class PluginController {
                 `${this.templatesFolderPath}/CronjobSubscriber.php.template`,
                 [
                     ['%pluginName%', this.pluginName],
-                ]
+                ],
             );
         }
 
@@ -200,7 +200,7 @@ export default class PluginController {
                     ['%pluginName%', this.pluginName],
                     ['%pluginNameSnakeCaseLowercaseNoPrefix%', this.pluginNameSnakeCaseLowercaseNoPrefix],
                     ['%pluginNameSnakeCaseLowercaseNoPrefix%', this.pluginNameSnakeCaseLowercaseNoPrefix],
-                ]
+                ],
             );
         }
 
@@ -210,7 +210,7 @@ export default class PluginController {
                 `${this.templatesFolderPath}/config.xml.template`,
                 [
                     ['%pluginName%', this.pluginName],
-                ]
+                ],
             );
         }
 
@@ -264,10 +264,10 @@ export default class PluginController {
     }
 
     determinePluginFolderPath() {
-        const dirCustomExists = this.fileController.directoryExists('./custom/plugins');
-
-        if (dirCustomExists) {
+        if (this.fileController.directoryExists('./custom/plugins')) {
             this.pluginFolderPath = `./custom/plugins/${this.pluginName}`;
+        } else if (this.fileController.directoryExists('./plugins')) {
+            this.pluginFolderPath = `./plugins/${this.pluginName}`;
         }
     }
 }
