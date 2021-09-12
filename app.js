@@ -4,7 +4,7 @@
 
 import inquirer from 'inquirer';
 import Rx from 'rxjs';
-import PluginController from './Controller/plugin.controller.mjs';
+import PluginController from './Controller/plugin.controller.js';
 
 const pluginController = new PluginController();
 const prompts = new Rx.Subject();

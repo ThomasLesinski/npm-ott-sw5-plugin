@@ -12,8 +12,5 @@
     "inquirer": "^7.3.0",
     "rxjs": "^6.6.0",
     "shelljs": "^0.8.4"
-  },
-  "devDependencies": {
-    "jest": "^27.1.1"
   }
 }
